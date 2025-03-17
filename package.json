@@ -1,0 +1,8 @@
+{
+  "name": "ier-website-klein",
+  "version": "1.0.0",
+  "description": "Frontend website",
+  "main": "index.html",
+  "scripts": {},
+  "license": "ISC"
+}
