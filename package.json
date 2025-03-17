@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Frontend website",
   "main": "index.html",
-  "scripts": {},
+  "scripts": {
+    "build": "echo 'No build script needed'"
+  },
   "license": "ISC"
 }
