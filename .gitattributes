@@ -1,0 +1,4 @@
+images/IMG_9923.mov filter=lfs diff=lfs merge=lfs -text
+images/IMG_8262.mov filter=lfs diff=lfs merge=lfs -text
+images/IMG_8962.mov filter=lfs diff=lfs merge=lfs -text
+* !text !filter !merge !diff

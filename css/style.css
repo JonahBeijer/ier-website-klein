@@ -1,0 +1,27 @@
+/*body {*/
+/*    background-color: pink;*/
+/*    text-align: center;*/
+/*    font-family: 'Comic Sans MS', cursive;*/
+/*}*/
+
+/*.hello-kitty-home, .hello-kitty-gallery, .hello-kitty-about {*/
+/*    margin-top: 50px;*/
+/*}*/
+
+/*.kitty-animation {*/
+/*    width: 200px;*/
+/*    animation: float 2s infinite ease-in-out;*/
+/*}*/
+
+/*@keyframes float {*/
+/*    0% { transform: translateY(0); }*/
+/*    50% { transform: translateY(-10px); }*/
+/*    100% { transform: translateY(0); }*/
+/*}*/
+
+/*.image-grid img, .memory-list img {*/
+/*    width: 150px;*/
+/*    margin: 10px;*/
+/*    border-radius: 10px;*/
+/*    display: block;*/
+/*}*/

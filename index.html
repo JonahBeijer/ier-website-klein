@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Kitty</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="icon" href="images/hellokit.webp" type="image/png" />
+
+    <style>
+        @font-face {
+            font-family: 'HelloKittyFont';
+            src: url("fonts/Cecil34-6L7M.ttf") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'HelloKittyFont', sans-serif;
+            cursor: url("cursors/Hello Kitty normal select.cur"), auto;
+        }
+        a, button, .clickable {
+            cursor: url("cursors/Hello Kitty help select.cur"), pointer;
+        }
+
+        /* Nieuwe klasse voor desktop-gif containers */
+        .desktop-gif {
+            width: 100px;
+            height: 100px;
+        }
+        @media (min-width: 1700px) {
+            .desktop-gif {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+
+        .mobile-gif {
+            width: 80px;
+            height: 80px;
+        }
+        @media (max-width: 376px) {
+            .mobile-gif {
+                width: 65px;
+                height: 65px;
+            }
+        }
+
+
+        /* Custom wiggle-animatie */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .animate-wiggle {
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        /* Beginstatus: container gesloten */
+        #mobileMenu {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            /* Zorg dat de container wel in de layout staat */
+        }
+
+        /* Wanneer actief: container geopend */
+        #mobileMenu.show {
+            max-height: 300px;  /* Pas dit aan op basis van de daadwerkelijke hoogte van je menu */
+            opacity: 1;
+        }
+
+
+
+
+    </style>
+</head>
+<body class="bg-pink-100">
+<!-- Navigation -->
+<nav class="bg-pink-300 text-white shadow-lg py-4 px-8">
+    <div class="container mx-auto flex items-center justify-between">
+        <div class="flex items-center space-x-3">
+            <img src="images/hellogif.gif" alt="Logo" class="h-10 w-10 animate-bounce" />
+            <span class="font-extrabold text-2xl tracking-wide">Iertje</span>
+        </div>
+        <div class="md:hidden">
+            <button id="mobileMenuButton" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <div id="navLinks" class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300">
+                <img src="images/d91d27f1-7a34-46aa-b4f4-4106930e03ff_removalai_preview.png" alt="Home Icon" class="w-5 h-5 mr-1 mb-2" />
+                Home
+            </a>
+            <a href="gallery.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300">
+                <img src="images/1103e805-8d30-4474-9ea2-7a284a72951a_removalai_preview.png" alt="Friends Icon" class="w-5 h-5 mr-1" />
+                Hello kitty friends
+            </a>
+            <a href="about.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300">
+                <img src="images/374ca96a-00c4-49b6-b05c-607a69fc6f9e_removalai_preview.png" alt="About Icon" class="w-5 h-5 mr-1" />
+                Us!
+            </a>
+        </div>
+    </div>
+    <div id="mobileMenu" class="md:hidden bg-pink-300 flex flex-col space-y-2 mt-2" style="display: none;">
+        <a href="index.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300 px-4">
+            <img src="images/d91d27f1-7a34-46aa-b4f4-4106930e03ff_removalai_preview.png" alt="Home Icon" class="w-5 h-5 mr-1 mb-2" />
+            Home
+        </a>
+        <a href="gallery.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300 px-4">
+            <img src="images/1103e805-8d30-4474-9ea2-7a284a72951a_removalai_preview.png" alt="Friends Icon" class="w-5 h-5 mr-1" />
+            Hello kitty friends
+        </a>
+        <a href="about.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300 px-4">
+            <img src="images/374ca96a-00c4-49b6-b05c-607a69fc6f9e_removalai_preview.png" alt="About Icon" class="w-5 h-5 mr-1" />
+            Us!
+        </a>
+    </div>
+
+
+
+</nav>
+
+<!-- Content -->
+<div class="text-center p-10 bg-pink-200 min-h-screen relative">
+    <h1 class="text-4xl font-bold text-pink-600 mb-6">🎀 Welkom iertje op je website 🎀</h1>
+    <p class="text-lg text-gray-700 mb-6">Eerst hebben we leuke GIFjes</p>
+    <img src="images/hellokit.webp" alt="Kitty 1" class="mx-auto w-40 animate-bounce" />
+
+    <!-- Desktop-versie: alleen zichtbaar op md en groter -->
+    <div class="absolute inset-0 hidden md:block">
+        <!-- Voor elke positie behoud je top/left via inline styles -->
+        <!-- Gebruik de klasse .desktop-gif voor consistente grootte -->
+        <div class="desktop-gif absolute" style="top:5%; left:10%;">
+            <img src="images/hello1.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:15%; left:70%;">
+            <img src="images/hello2.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:25%; left:30%;">
+            <img src="images/hello3.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:30%; left:60%;">
+            <img src="images/hello4.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:45%; left:20%;">
+            <img src="images/hello5.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:55%; left:80%;">
+            <img src="images/hello6.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:65%; left:40%;">
+            <img src="images/hello7.png" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="top:75%; left:60%;">
+            <img src="images/hello9.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="bottom:15%; left:15%;">
+            <img src="images/hello10.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="bottom:25%; left:55%;">
+            <img src="images/hello8.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="bottom:35%; left:35%;">
+            <img src="images/hello11.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="desktop-gif absolute" style="bottom:45%; left:75%;">
+            <img src="images/hello12.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+    </div>
+
+    <!-- Mobile-versie blijft ongewijzigd -->
+    <div class="absolute inset-0 block md:hidden">
+        <div class="mobile-gif absolute" style="top:20%; left:5%;">
+            <img src="images/hello1.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-bounce" />
+        </div>
+        <div class="mobile-gif absolute" style="top:20%; left:70%; ">
+            <img src="images/hello2.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-spin" />
+        </div>
+        <div class="mobile-gif absolute" style="top:30%; left:11%; ">
+            <img src="images/hello3.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-pulse" />
+        </div>
+        <div class="mobile-gif absolute" style="top:35%; left:70%; ">
+            <img src="images/hello4.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-wiggle" />
+        </div>
+        <div class="mobile-gif absolute" style="top:60%; left:23%; ">
+            <img src="images/hello5.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 rotate-12" />
+        </div>
+        <div class="mobile-gif absolute" style="top:72%; left:55%; ">
+            <img src="images/hello6.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 -rotate-6" />
+        </div>
+        <div class="mobile-gif absolute" style="top:75%; left:11%; ">
+            <img src="images/hello7.png" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="mobile-gif absolute" style="top:45%; left:10%; ">
+            <img src="images/hello9.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110" />
+        </div>
+        <div class="mobile-gif absolute" style="bottom:3%; left:15%; ">
+            <img src="images/hello10.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-bounce" />
+        </div>
+        <div class="mobile-gif absolute" style="bottom:4%; left:65%; ">
+            <img src="images/hello8.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-spin" />
+        </div>
+        <div class="mobile-gif absolute" style="bottom:40%; left:55%; ">
+            <img src="images/hello11.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-pulse" />
+        </div>
+        <div class="mobile-gif absolute" style="bottom:30%; left:75%; ">
+            <img src="images/hello12.gif" alt="Kitty GIF" class="w-full h-full object-contain rounded-lg shadow-lg transition-transform duration-500 hover:scale-110 animate-wiggle" />
+        </div>
+    </div>
+</div>
+<!-- Eind Content -->
+
+<!-- Modal (responsief) -->
+<div id="modal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 hidden z-50">
+    <div class="bg-white p-4 sm:p-8 rounded-xl shadow-lg w-full max-w-md md:max-w-3xl relative">
+        <button id="closeModal" class="absolute top-2 right-2 text-pink-400 font-bold" style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;">✖</button>
+        <button id="prevBtn" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-pink-300 text-white p-2 rounded-full z-10" style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;">❮</button>
+        <button id="nextBtn" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-pink-300 text-white p-2 rounded-full z-10" style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;">❯</button>
+        <div id="imageContainer" class="relative">
+            <img id="modalImage" src="" alt="Modal Image" class="rounded-lg mb-2 border-4 border-pink-500 max-w-full max-h-[80vh] object-contain mx-auto block" />
+        </div>
+        <div id="videoContainer" class="hidden">
+            <video id="modalVideo" controls class="rounded-lg mb-2 border-4 border-pink-500 max-w-full max-h-[80vh] object-contain">
+                <source id="modalVideoSource" src="" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p id="modalDescription" class="text-pink-700 font-semibold text-lg mt-4"></p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="relative bg-pink-300 text-white text-center py-8 overflow-hidden">
+    <div class="relative z-10 container mx-auto px-4">
+        <p class="text-xl md:text-2xl font-bold mb-2">Voor Iertje</p>
+        <p class="text-sm md:text-base mb-4">Met liefde gemaakt</p>
+    </div>
+    <div class="absolute inset-0 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="absolute w-5 h-5 md:w-7 md:h-7 text-white opacity-100 animate-pulse pr-2" style="top:50%; left:10%;" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="absolute w-5 h-5 md:w-7 md:h-7 text-white opacity-100 animate-pulse pl-2" style="top:50%; right:10%;" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    document.getElementById('mobileMenuButton').addEventListener('click', () => {
+        if (mobileMenu.classList.contains('show')) {
+            // Dropdown sluiten: verwijder de .show-klasse zodat de exit-transitie start
+            mobileMenu.classList.remove('show');
+            mobileMenu.addEventListener('transitionend', function handler() {
+                if (!mobileMenu.classList.contains('show')) {
+                    mobileMenu.style.display = 'none';
+                }
+                mobileMenu.removeEventListener('transitionend', handler);
+            });
+        } else {
+            // Dropdown openen: maak hem zichtbaar en start de transitie
+            mobileMenu.style.display = 'flex';
+            // Forceer een reflow zodat de overgang wordt toegepast
+            void mobileMenu.offsetWidth;
+            mobileMenu.classList.add('show');
+        }
+    });
+
+
+
+
+
+    // Na het laden van de pagina, wijs een random animatie toe aan elke desktop-GIF
+    document.addEventListener("DOMContentLoaded", function () {
+        const animations = ["animate-bounce", "animate-spin", "animate-pulse", "animate-wiggle"];
+        document.querySelectorAll('.desktop-gif img').forEach((img) => {
+            // Indien er al een animatie-class in de HTML stond, kun je deze desgewenst eerst verwijderen
+            img.classList.remove("animate-bounce", "animate-spin", "animate-pulse", "animate-wiggle");
+            const randomAnimation = animations[Math.floor(Math.random() * animations.length)];
+            img.classList.add(randomAnimation);
+        });
+    });
+
+    // Voorbeeld: voeg een "waiting" klasse toe bij klik op links en knoppen
+    document.addEventListener("DOMContentLoaded", function () {
+        document.body.classList.remove("waiting");
+    });
+    document.querySelectorAll("a, button").forEach((el) => {
+        el.addEventListener("click", function () {
+            document.body.classList.add("waiting");
+            setTimeout(() => {
+                document.body.classList.remove("waiting");
+            }, 2000);
+        });
+    });
+</script>
+</body>
+</html>

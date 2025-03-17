@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello Kitty</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <link rel="icon" href="images/hellokit.webp" type="image/png" />
+
+    <style>
+        @font-face {
+            font-family: 'HelloKittyFont';
+            src: url("fonts/Cecil34-6L7M.ttf") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'HelloKittyFont', sans-serif;
+        }
+        /* Standaard cursor (Hello Kitty Move) */
+        body {
+            cursor: url("cursors/Hello Kitty normal select.cur"), auto;
+        }
+        /* Hover op klikbare elementen (Hello Kitty Click) */
+        a, button, .clickable {
+            cursor: url("cursors/Hello Kitty help select.cur"), pointer;
+        }
+
+        /* Custom wiggle-animatie */
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+        .animate-wiggle {
+            animation: wiggle 1s ease-in-out infinite;
+        }
+
+        /* Beginstatus: container gesloten */
+        #mobileMenu {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            /* Zorg dat de container wel in de layout staat */
+        }
+
+        /* Wanneer actief: container geopend */
+        #mobileMenu.show {
+            max-height: 300px;  /* Pas dit aan op basis van de daadwerkelijke hoogte van je menu */
+            opacity: 1;
+        }
+
+
+    </style>
+</head>
+<body class="bg-pink-100">
+<!-- Navigation -->
+<nav class="bg-pink-300 text-white shadow-lg py-4 px-8">
+    <div class="container mx-auto flex items-center justify-between">
+        <!-- Logo en merknaam -->
+        <div class="flex items-center space-x-3">
+            <img src="images/hellogif.gif" alt="Logo" class="h-10 w-10 animate-bounce" />
+            <span class="font-extrabold text-2xl tracking-wide">Iertje</span>
+        </div>
+        <!-- Hamburger voor mobiel -->
+        <div class="md:hidden">
+            <button id="mobileMenuButton" class="focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+                     viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        <!-- Navigatielinks voor desktop -->
+        <div id="navLinks" class="hidden md:flex items-center space-x-8">
+            <a href="index.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300">
+                <img src="images/d91d27f1-7a34-46aa-b4f4-4106930e03ff_removalai_preview.png" alt="Home Icon" class="w-5 h-5 mr-1 mb-2" />
+                Home
+            </a>
+            <a href="gallery.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300">
+                <img src="images/1103e805-8d30-4474-9ea2-7a284a72951a_removalai_preview.png" alt="Friends Icon" class="w-5 h-5 mr-1" />
+                Hello kitty friends
+            </a>
+            <a href="about.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300">
+                <img src="images/374ca96a-00c4-49b6-b05c-607a69fc6f9e_removalai_preview.png" alt="About Icon" class="w-5 h-5 mr-1" />
+                Us!
+            </a>
+        </div>
+    </div>
+    <!-- Mobiele menu links -->
+    <div id="mobileMenu" class="md:hidden bg-pink-300 flex flex-col space-y-2 mt-2" style="display: none;">
+        <a href="index.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300 px-4">
+            <img src="images/d91d27f1-7a34-46aa-b4f4-4106930e03ff_removalai_preview.png" alt="Home Icon" class="w-5 h-5 mr-1 mb-2" />
+            Home
+        </a>
+        <a href="gallery.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300 px-4">
+            <img src="images/1103e805-8d30-4474-9ea2-7a284a72951a_removalai_preview.png" alt="Friends Icon" class="w-5 h-5 mr-1" />
+            Hello kitty friends
+        </a>
+        <a href="about.html" class="flex items-center hover:text-yellow-200 transition-colors duration-300 px-4">
+            <img src="images/374ca96a-00c4-49b6-b05c-607a69fc6f9e_removalai_preview.png" alt="About Icon" class="w-5 h-5 mr-1" />
+            Us!
+        </a>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="text-center p-10 bg-pink-50 min-h-screen relative">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-pink-600 animate__animated animate__bounce text-center">
+        <img src="images/heart.gif" alt="Heart" class="inline-block mr-2 w-10 sm:w-40 md:w-56" />
+        Voor valentijn
+        <img src="images/heart.gif" alt="Heart" class="inline-block ml-2 w-10 sm:w-40 md:w-56" />
+    </h1>
+
+    <div class="flex justify-center mb-10">
+        <img src="images/hello.gif" alt="Kitty 1" class="mx-auto w-40" />
+    </div>
+
+    <p class="text-pink-700 font-semibold text-xl mb-8 animate__animated animate__fadeIn animate__delay-2s">
+        Onze leukste herrineringen samen
+    </p>
+
+    <!-- Modal voor slideshow (standaard verborgen) -->
+    <div id="modal" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 hidden z-50">
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-3xl w-full relative">
+            <button id="closeModal" class="absolute top-2 right-2 text-pink-400 font-bold"
+                    style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;">✖</button>
+
+            <!-- Navigatieknoppen altijd zichtbaar -->
+            <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-pink-300 text-white p-2 rounded-full z-10"
+                    style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;">❮</button>
+            <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-pink-300 text-white p-2 rounded-full z-10"
+                    style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;">❯</button>
+
+            <!-- Container voor afbeeldingen -->
+            <div id="imageContainer" class="relative">
+                <img id="modalImage" src="" alt="Modal Image" class="rounded-lg mb-2 border-4 border-pink-500 max-w-full h-[500px] object-contain mx-auto block" />
+            </div>
+
+            <!-- Container voor video (verborgen als geen video) -->
+            <div id="videoContainer" class="hidden">
+                <video id="modalVideo" controls class="rounded-lg mb-2 border-4 border-pink-500 max-w-full h-[500px] object-contain">
+                    <source id="modalVideoSource" src="" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Beschrijving -->
+            <p id="modalDescription" class="text-pink-700 font-semibold text-lg mt-4"></p>
+        </div>
+    </div>
+    <!-- Einde Modal -->
+
+    <!-- Cards: Op avontuur gaan -->
+    <h2 class="text-2xl font-semibold text-pink-600 mt-10 mb-5 animate__animated animate__fadeIn animate__delay-3s">
+        Op avontuur gaan
+    </h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center w-full">
+        <!-- Frankfurt -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/IMG_5997.JPEG", "images/865C4228-2172-45BC-A57D-88F267CB56BC.mp4", "images/IMG_8962-2.mov", "images/IMG_8974.JPEG"]'
+                 data-descriptions='["De zitplekken waren minder maar het samen ervaren kan nooit niet leuk zijn!", "FEIN FEIN FEIN FEIN!!!!!", "Waar staat tie dannnnnnnnnnn, piep klein", "Kijk hoe cute je hier staat!!!"]'>
+                <img src="images/IMG_5997.JPEG" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Frankfurt!</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">De zitplekken waren minder maar het samen ervaren kan nooit niet leuk zijn</p>
+        </div>
+
+        <!-- Parijs -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="media"
+                 data-images='["images/IMG_7646.JPEG", "images/D16300FA-654D-474A-B6D8-CB3D5181146E.mp4", "images/IMG_7704.MP4", "images/f4d58c53-bdb4-4e45-83ca-6669429f1a23.JPEG", "images/IMG_7659.JPEG"]'
+                 data-descriptions='["Is dat de Eifeltoren???????", "Samen onverwachts naar Kanye gaan", "Je zou maar Kanye hebben gezien (Miss Miss Westie!!!!)", "Waar zouden we zijn???", "Jij moet dan altijd met je grote waterhoofd op de foto"]'>
+                <img src="images/IMG_7646.JPEG" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Parijs</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Samen onverwachts naar Kanye gaan</p>
+        </div>
+
+        <!-- Brussel saampjes -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/IMG_0807.JPEG", "images/0810.mp4", "images/IMG_0828.JPEG", "images/IMG_0784.JPEG"]'
+                 data-descriptions='["JPEGMAFIA!!!!!!!!!!!!!!!!", "BIG BOOTY HOES!!!!!", "Wij zullen altijd kerken bekijken, maak niet uit waar we zijn", "SLAYYYYYYYYYY!!"]'>
+                <img src="images/IMG_0807.JPEG" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Brussel saampjes<3</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">JPEGMAFIA!!!!!!!!!!!!!!!!</p>
+        </div>
+    </div>
+
+    <!-- Cards: Op Vakantie! -->
+    <h2 class="text-2xl font-semibold text-pink-600 mt-10 mb-5">
+        Op Vakantie!
+    </h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center w-full">
+        <!-- Porec -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/IMG_5840.JPEG", "images/2963a659-a37b-43b6-ac63-deb5d0a1ec64.jpeg", "images/51C72014-81A1-4BBC-9A15-08100BE0C646.JPEG", "images/IMG_5917.JPEG"]'
+                 data-descriptions='["Helaas was ik ziek, maar wel deze leuke foto!", "DAMMMMNNNNNNNNNN", "Wij zijn echt cuties!", "Ik heb express niet die andere foto van ons samen daar gedaan omdat ik als een crackie eruit zag"]'>
+                <img src="images/IMG_5840.JPEG" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Porec</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Helaas was ik ziek, maar wel deze leuke foto</p>
+        </div>
+
+        <!-- Lissabon -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/f1c469d0-08cb-411a-922e-bc53d721cc49.jpg", "images/af558087-f161-42cc-8261-ed2c0e07349a.JPG", "images/IMG_9150.jpeg", "images/74FBE88D-2B7E-4D83-B27C-A8409306F85C.MP4", "images/IMG_3270.jpeg"]'
+                 data-descriptions='["Booze cruise!", "Jij bent zoon schatje met je peace-teken", "Ik moet je wel zeggen je heb bij deze foto wel een hele goede camera man!", "Zonsondergang bekijken hihi!!", "Dit gaan wij later opkopen zodat je elke dag een fairy kan spelen"]'>
+                <img src="images/f1c469d0-08cb-411a-922e-bc53d721cc49.jpg" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Lissabon</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Een van onze leukste vakanties</p>
+        </div>
+
+        <!-- Venetie -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/IMG_5472.jpeg", "images/IMG_5322.jpg", "images/IMG_5429.jpeg", "images/IMG_2901.JPEG", "images/IMG_2930.MP4"]'
+                 data-descriptions='["Wie is de baddie op de trap!", "Vind deze foto schattig van ons", "Deze heeft geen uitleg nodig", "Ik die stiekem foto s van je maak", "Wij die Venetie gaan ontdekken"]'>
+                <img src="images/IMG_5472.jpeg" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Venetie</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Onze eerste vakantie door een goedkope vliegticket</p>
+        </div>
+    </div>
+
+    <!-- Cards: Activiteiten doen -->
+    <h2 class="text-2xl font-semibold text-pink-600 mt-10 mb-5">
+        Activiteiten doen
+    </h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center w-full">
+        <!-- Wandelen -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/f7295c33-c930-4b1a-99cc-6eced48fe6e3.jpg", "images/d48bfc35-ee57-49f6-acfb-4824f84d7289.jpg", "images/IMG_8442.JPEG", "images/IMG_1541.PNG"]'
+                 data-descriptions='["Het hoeft helemaal niet ver om ons te vermaken", "Kijk hoe verliefd je naar me kijkt", "Samen picknicken zal ik altijd met je willen doen", "Onze 1e date, vanaf hier begon echt alles!!"]'>
+                <img src="images/f7295c33-c930-4b1a-99cc-6eced48fe6e3.jpg" alt="Herinnering Wandelen"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Wandelen</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Het hoeft helemaal niet ver om ons te vermaken</p>
+        </div>
+
+        <!-- Samen uiteten -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/IMG_8562.JPEG", "images/IMG_5540.JPEG", "images/IMG_2480.JPEG", "images/IMG_6342.jpeg"]'
+                 data-descriptions='["De ondergrondse romantische restaurant💕", "Zo kijk jij altijd als je honger hebt", "Hier hebben echt lekker gegeten maar ook een andere keer heel vies", "Supermercado + Sylvanian familie = blije Iertje"]'>
+                <img src="images/IMG_8562.JPEG" alt="Herinnering Samen uiteten"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Samen uiteten</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">De ondergrondse romantische restaurant💕</p>
+        </div>
+
+        <!-- Gewoon US!! -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/FullSizeRender.JPEG", "images/IMG_8113.JPEG", "images/IMG_3709.JPEG", "images/40f96424-b4aa-42a0-a9a5-59be3e0aa269.jpg", "images/IMG_1838.JPG"]'
+                 data-descriptions='["Allemaal us!!", "Allemaal us!!", "Allemaal us!!", "Allemaal us!!", "Allemaal us!!"]'>
+                <img src="images/FullSizeRender.JPEG" alt="Herinnering Samen uiteten"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Gewoon US!!</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Us bij verschillende dingen</p>
+        </div>
+    </div>
+
+    <!-- Cards: Random foto's -->
+    <h2 class="text-2xl font-semibold text-pink-600 mt-10 mb-5">
+
+    </h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 justify-center w-full">
+        <!-- Artemis / Lil Tracy -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/IMG_0007.jpeg", "images/99999.mp4", "images/62070425-716F-44E6-8497-089720284A5F.MP4", "images/IMG_8262-2.mov"]'
+                 data-descriptions='["Staanplaatsen > zitplaatsen", "Beste concert van ons!", "SWITCHBLADES COCAINE!!!!", "I fell in love with a bad bitch, letterijk ik"]'>
+                <img src="images/IMG_0007.jpeg" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Artemis / Lil Tracy</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Staanplaatsen > zitplaatsen</p>
+        </div>
+
+        <!-- Samen Raven -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="media"
+                 data-images='["images/IMG_5159.jpeg", "images/IMG_9923-2.mov", "images/filtered-8E3C2665-BEC0-4DB4-B8F6-A1C89E406BF1.mp4", "images/348cd975-4f82-4496-b9be-f3fe6d9dad33.MP4", "images/IMG_7163.jpeg"]'
+                 data-descriptions='["Cute foto van ons in rave fits!", "Ik vind altijd leuk als je los gaat!!", "Allebei stinky sweaty", "Cutie jij!"]'>
+                <img src="images/IMG_5159.jpeg" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Samen Raven</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">🌷</p>
+        </div>
+
+        <!-- Samen picknicken -->
+        <div class="bg-white p-4 rounded-xl shadow-lg border-4 border-pink-300 transform hover:scale-105 transition duration-500 h-auto">
+            <div class="memory-content cursor-pointer"
+                 style="cursor: url('cursors/Hello Kitty help select.cur'), pointer;"
+                 data-type="image"
+                 data-images='["images/c29cc5d4-0ddc-4610-aac8-d8685c629347.jpeg", "images/c7b5f990-844e-4446-b1c5-d07c0b541360.jpg", "images/3A6DE679-470E-4C3B-8C72-A6895FD21EC8.JPEG", "images/IMG_8896.jpeg", "images/IMG_7323.JPEG"]'
+                 data-descriptions='["Weer letterlijk us!", "Toen was je al Stinky", "Samen tatoeages zetten hihi", "Onze future plannen maken, heb er echt zin om dat met jou te doen!!", "Kijk hoe ik verliefd naar je kijk! ( zal ik altijd blijven doen )"]'>
+                <img src="images/c29cc5d4-0ddc-4610-aac8-d8685c629347.jpeg" alt="Herinnering 8562"
+                     class="rounded-lg mb-2 border-4 border-pink-500 w-full h-64 object-cover mx-auto block" />
+            </div>
+            <p class="text-pink-700 font-semibold text-lg text-center mt-3">Random foto's</p>
+            <p class="text-pink-500 text-sm mt-2 text-center">Weer letterlijk us!</p>
+        </div>
+    </div>
+
+
+    <p class="text-xl text-pink-600 mt-10 animate__animated animate__fadeIn animate__delay-4s">
+        Love ya!! 💕
+    </p>
+</div>
+
+<!-- Footer -->
+<footer class="relative bg-pink-300 text-white text-center py-8 overflow-hidden">
+    <!-- Content bovenop de achtergrond -->
+    <div class="relative z-10 container mx-auto px-4">
+        <p class="text-xl md:text-2xl font-bold mb-2">Voor Iertje</p>
+        <p class="text-sm md:text-base mb-4">Met liefde gemaakt</p>
+    </div>
+    <!-- Geanimeerde hartjes als decoratie -->
+    <div class="absolute inset-0 pointer-events-none">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+             class="absolute w-5 h-5 md:w-7 md:h-7 text-white opacity-100 animate-pulse pr-2"
+             style="top:50%; left:10%;" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+             class="absolute w-5 h-5 md:w-7 md:h-7 text-white opacity-100 animate-pulse pl-2"
+             style="top:50%; right:10%;" viewBox="0 0 24 24">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+    // Mobiele navigatie toggle
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    document.getElementById('mobileMenuButton').addEventListener('click', () => {
+        if (mobileMenu.classList.contains('show')) {
+            // Dropdown sluiten: verwijder de .show-klasse zodat de exit-transitie start
+            mobileMenu.classList.remove('show');
+            mobileMenu.addEventListener('transitionend', function handler() {
+                if (!mobileMenu.classList.contains('show')) {
+                    mobileMenu.style.display = 'none';
+                }
+                mobileMenu.removeEventListener('transitionend', handler);
+            });
+        } else {
+            // Dropdown openen: maak hem zichtbaar en start de transitie
+            mobileMenu.style.display = 'flex';
+            // Forceer een reflow zodat de overgang wordt toegepast
+            void mobileMenu.offsetWidth;
+            mobileMenu.classList.add('show');
+        }
+    });
+
+    // Voorbeeld: "waiting" state bij klikken op links en knoppen
+    document.addEventListener("DOMContentLoaded", function() {
+        document.body.classList.remove("waiting");
+    });
+    document.querySelectorAll("a, button").forEach(el => {
+        el.addEventListener("click", function() {
+            document.body.classList.add("waiting");
+            setTimeout(() => {
+                document.body.classList.remove("waiting");
+            }, 2000);
+        });
+    });
+
+    // Modal- en slideshow-functionaliteit voor geheugenkaarten
+    const modal = document.getElementById('modal');
+    const closeModal = document.getElementById('closeModal');
+    const modalDescription = document.getElementById('modalDescription');
+
+    // Elementen voor de media-slideshow
+    const imageContainer = document.getElementById('imageContainer');
+    const modalImage = document.getElementById('modalImage');
+    const nextBtn = document.getElementById('nextBtn');
+    const prevBtn = document.getElementById('prevBtn');
+
+    // Elementen voor de video
+    const videoContainer = document.getElementById('videoContainer');
+    const modalVideo = document.getElementById('modalVideo');
+    const modalVideoSource = document.getElementById('modalVideoSource');
+
+    let currentMedia = []; // Array met objecten {type: 'image'|'video', src: ''}
+    let currentIndex = 0;
+    let currentItem = null; // Het aangeklikte element
+
+    // Voeg een event listener toe aan elke geheugenkaart
+    document.querySelectorAll('.memory-content').forEach(item => {
+        item.addEventListener('click', event => {
+            currentItem = item;
+            currentMedia = [];
+            currentIndex = 0;
+
+            // Parse de data-images (JSON)
+            const imagesData = item.getAttribute('data-images');
+            try {
+                JSON.parse(imagesData).forEach(url => {
+                    currentMedia.push({
+                        type: url.match(/\.(mp4|mov|webm)$/i) ? 'video' : 'image',
+                        src: url
+                    });
+                });
+            } catch (e) {
+                const fallbackSrc = item.querySelector('img').getAttribute('src');
+                currentMedia.push({
+                    type: 'image',
+                    src: fallbackSrc
+                });
+            }
+
+            showMedia(currentIndex);
+            modal.classList.remove('hidden');
+        });
+    });
+
+    function showMedia(index) {
+        // Pauzeer de video indien die speelt
+        modalVideo.pause();
+
+        const media = currentMedia[index];
+
+        // Verberg eerst beide containers
+        imageContainer.classList.add('hidden');
+        videoContainer.classList.add('hidden');
+
+        if (media.type === 'video') {
+            modalVideoSource.setAttribute('src', media.src);
+            modalVideo.load();
+            videoContainer.classList.remove('hidden');
+            modalVideo.play().catch(error => {
+                console.log('Video autoplay mislukt, gebruikersinteractie vereist');
+            });
+        } else {
+            modalImage.src = media.src;
+            imageContainer.classList.remove('hidden');
+        }
+
+        // Update de beschrijving
+        const descriptionsData = currentItem.getAttribute('data-descriptions');
+        if (descriptionsData) {
+            try {
+                const descriptions = JSON.parse(descriptionsData);
+                modalDescription.textContent = descriptions[index] || '';
+            } catch (error) {
+                console.error("Fout bij het parsen van data-descriptions:", error);
+                modalDescription.textContent = currentItem.getAttribute('data-description') || '';
+            }
+        } else {
+            modalDescription.textContent = currentItem.getAttribute('data-description') || '';
+        }
+    }
+
+    // Volgende knop
+    nextBtn.addEventListener('click', () => {
+        if (currentMedia.length > 0) {
+            currentIndex = (currentIndex + 1) % currentMedia.length;
+            showMedia(currentIndex);
+        }
+    });
+
+    // Vorige knop
+    prevBtn.addEventListener('click', () => {
+        if (currentMedia.length > 0) {
+            currentIndex = (currentIndex - 1 + currentMedia.length) % currentMedia.length;
+            showMedia(currentIndex);
+        }
+    });
+
+    // Sluit modal
+    closeModal.addEventListener('click', () => {
+        modal.classList.add('hidden');
+        modalVideo.pause();
+    });
+
+    // Sluit modal wanneer op de achtergrond geklikt wordt
+    modal.addEventListener('click', event => {
+        if (event.target === modal) {
+            modal.classList.add('hidden');
+            modalVideo.pause();
+        }
+    });
+</script>
+
+<style>
+    .memory-content {
+        position: relative;
+        display: inline-block;
+        padding: 0;
+        overflow: visible;
+        margin-bottom: 10px;
+    }
+    .memory-content::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        width: calc(100% + 40px);
+        height: calc(100% + 40px);
+        background: url('images/pngegg.png') no-repeat center center;
+        background-size: 100% 100%;
+        pointer-events: none;
+        z-index: 1;
+        border-radius: 5px;
+    }
+    .memory-content img,
+    .memory-content video {
+        position: relative;
+        z-index: 0;
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+    #videoContainer video {
+        width: 100%;
+        height: 64vh;
+        object-fit: contain;
+        background: black;
+    }
+</style>
+</body>
+</html>
